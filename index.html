@@ -3,11 +3,12 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>The HTML5 Herald</title>
+  <title>Tiger Request</title>
   <meta name="description" content="Single Form">
   <meta name="author" content="Ismael Jimenez">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="css/styles.css?v=1.0">
+  <link href='https://fonts.googleapis.com/css?family=Slabo+27px' rel='stylesheet' type='text/css'>
   <!--[if lt IE 9]>
   <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
   <![endif]-->
@@ -15,23 +16,24 @@
 <body ng-app="tigerApp">
   <!-- navbar -->
   <div class="nav">
-    <ul>
-      <li>
-        <span class="nav-circle">1</span>Date and zip code
-      </li>
-      <li>
-        <span class="nav-circle">2</span>Cleaning Details
-      </li>
-      <li>
-        <span class="nav-circle">3</span>Address
-      </li>
-      <li>
-        <span class="nav-circle">4</span>Payment
-      </li>
-    </ul>
+
+    <a href="#date"class="active">
+      <span class="nav-circle">1</span>Date and zip code
+    </a>    
+    <a href="#details">
+      <span class="nav-circle">2</span>Cleaning Details
+    </a>
+    <a href="#address">
+      <span class="nav-circle">3</span>Address
+    </a>
+
+    <a href="#payment">
+      <span class="nav-circle">4</span>Payment
+    </a>
+
   </div>
   <!-- main container -->
-  <div class="container">
+  <div class="main-container">
     <!-- times section -->
     <section class="times">
       <div>
@@ -70,8 +72,15 @@
       <a href="#" class="link">Go Back</a>
     </section>
   </div>
+
   <!-- scripts -->
   <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
   <script src="js/app.js"></script>
+
+  <script>
+    document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] +
+    ':35729/livereload.js?snipver=1"></' + 'script>')
+  </script>
+
 </body>
 </html>

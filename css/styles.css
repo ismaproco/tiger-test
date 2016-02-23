@@ -1,0 +1,88 @@
+/* clear styles */
+* {
+    margin:0;
+    padding: 0;
+}
+
+/* page styles */
+body {
+    font-family: 'Slabo 27px', serif;
+    background-color: rgb(242, 242, 242);
+}
+
+/* nav bar styles */
+.nav {
+    background-color: rgb(53, 53, 53);
+    color: #fff;
+    font-size: 0.7em;
+    position: fixed;
+    width: 100%;
+    height: 20px;
+    text-align: center;
+}
+
+.nav-circle {
+    display: inline-block;
+    text-align: center;
+    border: solid #ccc 2px;
+    border-radius: 50%;
+    margin: 0 10px 0 0;
+    width: 20px;
+    height: 20px;
+    line-height: 20px;
+}
+
+.nav a{
+    display: inline-block;
+    background-color: rgb(53, 53, 53);
+    list-style-type: none;
+    width:25%;
+    float:left;
+    color: #ccc;
+    text-decoration: none;
+    height: 30px;
+    line-height: 30px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.nav a.active {
+    border-bottom: solid #c00 2px;
+}
+
+@media (min-width: 500px) {
+    .nav {
+        height: 30px;
+    }
+
+    .nav-circle {
+        width: 30px;
+        height: 30px;
+        line-height: 30px;
+    }
+
+    .nav a{
+        height: 50px;
+        line-height: 50px;
+    }
+}
+
+
+/* main container */
+
+.main-container {
+    padding: 70px 10px 0 10px;
+    width: 100%;
+    margin: auto;
+}
+
+.main-container {
+    color: #999;
+}
+
+@media (min-width: 500px) {
+    .main-container {
+        padding: 90px 10px 0 10px;
+        width: 70%;
+    }    
+}
