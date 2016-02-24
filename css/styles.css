@@ -132,3 +132,27 @@ body {
         width: 70%;
     }    
 }
+
+
+/* toggle list container */
+.toggle-list-container {
+    overflow: auto;
+    height: 160px;
+    width: 100%;
+    background-color: #fff;
+}
+
+.toggle-list-container>ul {
+    color: #000;
+    line-height: 39px;
+    font-size: 1.2em;
+    list-style-type: none;
+}
+
+.toggle-list-container>ul li{
+    padding: 0 0 0 40px;
+    border-bottom: solid 1px #ccc;
+}
+
+
+

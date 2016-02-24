@@ -35,12 +35,40 @@ app.controller('navController',['$scope','$location', 'navService',function($sco
         console.log(navigation);
         navService.updateActive(value[1]);
     });
-
-
-
 }]);
 
 app.controller('timesController',function($scope, $route, $routeParams, $location){
+    $scope.dateList = { isOpen:false, items:[] };
+    $scope.selectedDate = "";
+
+    $scope.toggleDatesList = function(){
+        $scope.dateList.isOpen = !$scope.dateList.isOpen;
+        console.log($scope.dateList.isOpen);
+    }
+
+    /* dates methods*/
+    function getDates(){
+        var date = new Date();
+
+        var arrDates = [];
+        for(var i = 0; i < 365; i++){
+            arrDates.push(date.getDate() + "/" + (date.getMonth()+1) + "/" + date.getFullYear() );
+            date.setTime( date.getTime() + 1 * 86400000 );
+        }
+        return arrDates;
+    }
+    
+    getDates().forEach(function(date){
+        $scope.dateList.items.push({text:date});
+    });
+
+    $scope.dateList.selectedDate = function(date) {
+        console.log(date);
+        $scope.selectedDate = date;
+        $scope.dateList.isOpen = false;
+    }
+
+    /* times methods */
     
 });
 
