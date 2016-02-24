@@ -1,0 +1,10 @@
+<div class="toggle-list" ng-mouseleave="ctrl.hide()">
+    <input id="time" name="time" type="text" placeholder="{{ctrl.placeholder}}" ng-click="ctrl.toggle()" ng-model="ctrl.selectedValue.text"/>
+    <div ng-if="ctrl.isOpen && ctrl.list.length > 0" class="toggle-list-container">
+      <ul>
+         <li ng-repeat="item in ctrl.list" ng-click="ctrl.selectValue(item)">
+            {{ item.text }}
+         </li>
+      </ul>
+    </div>    
+</div>

@@ -2,21 +2,18 @@
 <section class="times">
   <div>
     <h2>When would you like to book?</h2>
-    <input id="date" name="date" type="text" placeholder="Select date" ng-click="toggleDatesList()" ng-model="selectedDate.text"/>
-    <div ng-if="dateList.isOpen" class="toggle-list-container">
-      <ul>
-         <li ng-repeat="item in dateList.items" ng-click="dateList.selectedDate(item)">
-            {{ item.text }}
-         </li>
-      </ul>
-    </div>
-    <input id="time" name="time" type="text" placeholder="Select time"/>
-    <input type="checkbox" id="checkFlexible" name="flexibleCheck"/>
+    
+    <toggle-input placeholder="Select Date" data="datesData" identifier="date"></toggle-input>
+
+    <toggle-input placeholder="Select Time" data="timesData" identifier="time"></toggle-input>
+
+    <input type="checkbox" id="checkFlexible" name="flexibleCheck" />
     <label for="flexibleCheck">I can be flexible with time</label>  
+
   </div>
   <div>
     <h2>Please enter your zip code</h2>
-    <input type="text" placeholder="Zip code"></input>
+    <toggle-input placeholder="Zip code" identifier="zip"></toggle-input>
   </div>
-  <a href="#" class="btn">Next</a>
+  <a href="#details" class="btn">Next</a>
 </section>

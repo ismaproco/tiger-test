@@ -32,19 +32,14 @@ app.controller('navController',['$scope','$location', 'navService',function($sco
     $scope.$location = $location;
     $scope.$watch('$location.path()', function(newValue){
         var value = newValue.split('/');
-        console.log(navigation);
         navService.updateActive(value[1]);
     });
 }]);
 
-app.controller('timesController',function($scope, $route, $routeParams, $location){
-    $scope.dateList = { isOpen:false, items:[] };
-    $scope.selectedDate = "";
-
-    $scope.toggleDatesList = function(){
-        $scope.dateList.isOpen = !$scope.dateList.isOpen;
-        console.log($scope.dateList.isOpen);
-    }
+app.controller('timesController',['$scope','$location','valuesService',  function($scope, $location, valuesService){
+    
+    $scope.date = valuesService.date;
+    $scope.time = valuesService.time; 
 
     /* dates methods*/
     function getDates(){
@@ -58,24 +53,120 @@ app.controller('timesController',function($scope, $route, $routeParams, $locatio
         return arrDates;
     }
     
-    getDates().forEach(function(date){
-        $scope.dateList.items.push({text:date});
-    });
-
-    $scope.dateList.selectedDate = function(date) {
-        console.log(date);
-        $scope.selectedDate = date;
-        $scope.dateList.isOpen = false;
-    }
+    $scope.datesData = getDates();
 
     /* times methods */
-    
-});
+    function getTimes() {
+        var times = [];
+        for (var i = 9; i < 18; i++) {
+            times.push(i + ":00");
+        }
+        return times;
+    }
+
+    $scope.timesData = getTimes();
+}]);
 
 app.controller('detailsController', function($scope) {
+    function getHours() {
+        var hours = [];
+        for (var i = 1; i < 12; i++) {
+            hours.push(i);
+        }
+        return hours;
+    }
 
+    $scope.hoursData = getHours();
+
+    function getFrecuency() {
+        return [
+            "<span>Once</span><span>from 14,90 /h</>"
+        ];
+    }
+
+    $scope.frequencyData = getFrecuency();
 });
 
 app.controller('defaultController', function($scope) {
 
 });
+
+app.controller('toggleInputController', ['$scope', 'valuesService',function($scope, vService) {
+    var ctrl = this;
+    ctrl.list = [];
+    ctrl.selectedValue='';
+    ctrl.isOpen = false;
+
+    ctrl.toggle = function(){
+        ctrl.isOpen = !ctrl.isOpen;
+    };
+
+    ctrl.hide = function(){
+        ctrl.isOpen = false;
+    };
+
+    ctrl.selectValue = function(value) {
+        ctrl.selectedValue = value;
+        ctrl.isOpen = false;
+        if(vService){
+            vService[ctrl.identifier] = value;
+        }
+    }
+
+    $scope.$watch('ctrl.selectedValue',ctrl.selectValue);
+
+    ctrl.init = function(holder, data, identifier,type){
+        ctrl.placeholder = holder;
+        ctrl.data = data;
+        ctrl.identifier = identifier;
+        ctrl.type = type || '';
+
+        if(data && Array.isArray(data)) {
+            data.forEach(function(value){
+                if(ctrl.type === 'grid'){
+                    ctrl.list.push({grid0:value[0], grid1:value[1]});    
+                }else{
+                    ctrl.list.push({text:value});
+                }
+            });
+        }
+        
+        if(ctrl.identifier && vService[ctrl.identifier]){
+            ctrl.selectedValue = vService[ctrl.identifier];
+        }
+    };
+}]);
+
+app.directive('toggleInput', ['$compile','$parse',function($compile, $parse){
+    return {
+        scope:true,
+        restrict:'E',
+        controller: 'toggleInputController',
+        controllerAs: 'ctrl',
+        bindToController:true,
+        templateUrl:'templates/toggleInput.html',
+        compile: function(element){
+            return function(scope, element, attrs) {
+                var holder, data, identifier, type;
+
+                if(attrs.placeholder){
+                    holder = attrs.placeholder;    
+                }
+                
+                if(attrs.data){
+                    data = $parse(attrs.data)(scope);    
+                }
+
+                if(attrs.identifier){
+                    identifier =  attrs.identifier;
+                }
+
+                if(attrs.type){
+                    type =  attrs.type;
+                }
+
+                scope.ctrl.init(holder, data, identifier, type);
+            }
+        }
+    }
+}]);

@@ -28,4 +28,14 @@ angular.module('services', []).service('navService', function(){
     }
 
     return navManager;
-});
+})
+.service('valuesService', function(){
+    var appData = {
+        date:'',
+        time:'',
+        zip:'',
+        duration:'',
+        frequency:''
+    };
+    return appData;
+})

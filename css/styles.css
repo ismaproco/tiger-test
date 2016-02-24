@@ -135,11 +135,18 @@ body {
 
 
 /* toggle list container */
+.toggle-list {
+    width:100%;
+    position: relative;
+}
+
 .toggle-list-container {
     overflow: auto;
     height: 160px;
     width: 100%;
     background-color: #fff;
+    position:absolute;
+    z-index: 9999;
 }
 
 .toggle-list-container>ul {
@@ -147,6 +154,7 @@ body {
     line-height: 39px;
     font-size: 1.2em;
     list-style-type: none;
+    z-index: 9999;
 }
 
 .toggle-list-container>ul li{
@@ -154,5 +162,7 @@ body {
     border-bottom: solid 1px #ccc;
 }
 
-
+.toggle-list-container>ul li:hover{
+    background-color: #ddd;
+}
 
