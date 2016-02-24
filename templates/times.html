@@ -1,19 +1,22 @@
 <!-- times section -->
 <section class="times">
-  <div>
+  <div class="page-container">
     <h2>When would you like to book?</h2>
-    
-    <toggle-input placeholder="Select Date" data="datesData" identifier="date"></toggle-input>
-
-    <toggle-input placeholder="Select Time" data="timesData" identifier="time"></toggle-input>
-
-    <input type="checkbox" id="checkFlexible" name="flexibleCheck" />
-    <label for="flexibleCheck">I can be flexible with time</label>  
-
+    <div class="big-column left">
+      <toggle-input placeholder="Select Date" data="datesData" identifier="date" icon="fa-calendar"></toggle-input>
+    </div>
+    <div class="big-column right">
+      <toggle-input placeholder="Select Time" data="timesData" identifier="time" icon="fa-clock-o"></toggle-input>
+      <input type="checkbox" id="checkFlexible" name="flexibleCheck" class="checkbox"/>
+      <label for="flexibleCheck">I can be flexible with time</label>  
+    </div>
   </div>
-  <div>
-    <h2>Please enter your zip code</h2>
-    <toggle-input placeholder="Zip code" identifier="zip"></toggle-input>
+  <div class="page-container">
+    <div class="big-column left">
+      <h2>Please enter your zip code</h2>
+      <toggle-input placeholder="Zip code" identifier="zip" icon="fa-map-marker"></toggle-input>
+      <a href="#details" class="btn">Next</a>
+    </div>
   </div>
-  <a href="#details" class="btn">Next</a>
+  
 </section>

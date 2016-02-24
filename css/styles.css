@@ -10,6 +10,11 @@ body {
     background-color: rgb(242, 242, 242);
 }
 
+a {
+    text-decoration: none;
+    color: #999;
+}
+
 /* nav bar styles */
 .nav {
     background-color: rgb(53, 53, 53);
@@ -124,15 +129,11 @@ body {
     text-decoration: none;
     color: #fff;
     text-transform: uppercase;
+    border-radius: 5px;
 }
 
 
-@media (min-width: 500px) {
-    .main-container {
-        padding: 90px 10px 0 10px;
-        width: 70%;
-    }    
-}
+
 
 /* details styles*/
 .options{
@@ -185,6 +186,29 @@ body {
     background-color: orange;
 }
 
+.lnk-basic {
+    display: block;
+    text-align: right;
+
+}
+
+.service {
+    display: block;
+    margin: 20px 0 0 20px;
+    color: #777;
+    padding-bottom: 20px;
+}
+
+.thumb-up {
+    color: orange;
+    font-size: 20px;
+    margin-right:5px; 
+}
+
+.other {
+    text-align: center;
+}
+
 /* toggle list container */
 .toggle-list {
     width:100%;
@@ -228,3 +252,91 @@ body {
     text-overflow: ellipsis;
 }
 
+.toggle-icon {
+    margin-top: 10px;
+    position: absolute;
+    z-index: 2;
+    color: #444;
+    background-color: #ccc;
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    display: block;
+}
+
+/* big screens */
+
+@media (min-width: 800px) {
+    .main-container {
+        padding: 90px 10px 0 10px;
+        width: 70%;
+    }
+
+    .big-column {
+        width:45%;
+        display: inline-block;
+        height: 100px;
+        float: left;
+    }
+
+    .big-column.left {
+        padding-right: 5%;
+    }
+
+    .big-column.rigth {
+        padding-left: 5%;
+    }
+
+    .big-column-big{
+        height: 150px;
+    }
+
+    .lnk-basic{
+        text-align: left;
+        margin-top: 20px;
+    }
+
+    .big-column.full {
+        width:100%;
+        height: 300px;
+    }
+
+    .big-column label {
+        padding-top: 20px;
+    }
+
+    .page-container {
+        width: 100%;
+    }
+
+    .page-container:before, .page-container:after {
+        content: "";
+        display: table;
+    }
+
+    .page-container:after {
+        clear:"both";
+    }
+    
+    .checkbox {
+        margin-top: 20px
+    }
+
+    .main-container .btn {  
+        margin-top: 30px;  
+        height: 40px;
+        line-height: 40px;
+    }
+
+    .thumb-up {
+        color: orange;
+        font-size: 50px;
+        margin-left: 20px;
+    }
+
+    .lnk-back {
+        padding-top: 40px;
+        display: block;
+    }
+}

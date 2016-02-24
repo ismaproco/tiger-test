@@ -122,11 +122,12 @@ app.controller('toggleInputController', ['$scope', 'valuesService',function($sco
 
     $scope.$watch('ctrl.selectedValue',ctrl.selectValue);
 
-    ctrl.init = function(holder, data, identifier,type){
+    ctrl.init = function(holder, data, identifier,type, icon){
         ctrl.placeholder = holder;
         ctrl.data = data;
         ctrl.identifier = identifier;
         ctrl.type = type || '';
+        ctrl.icon = icon || '';
 
         if(data && Array.isArray(data)) {
             data.forEach(function(value){
@@ -154,7 +155,7 @@ app.directive('toggleInput', ['$compile','$parse',function($compile, $parse){
         templateUrl:'templates/toggleInput.html',
         compile: function(element){
             return function(scope, element, attrs) {
-                var holder, data, identifier, type;
+                var holder, data, identifier, type, icon;
 
                 if(attrs.placeholder){
                     holder = attrs.placeholder;    
@@ -172,7 +173,11 @@ app.directive('toggleInput', ['$compile','$parse',function($compile, $parse){
                     type =  attrs.type;
                 }
 
-                scope.ctrl.init(holder, data, identifier, type);
+                if(attrs.icon){
+                    icon = attrs.icon;
+                }
+
+                scope.ctrl.init(holder, data, identifier, type, icon);
             }
         }
     }

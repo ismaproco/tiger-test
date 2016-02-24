@@ -1,4 +1,5 @@
-<div class="toggle-list" >
+<div class="toggle-list" ng-mouseleave="ctrl.hide()">
+    <span class="toggle-icon"><i class="fa {{ctrl.icon}}"></i></span>
     <input id="time" name="time" type="text" placeholder="{{ctrl.placeholder}}" ng-click="ctrl.toggle()" ng-model="ctrl.selectedValue.text" class="icon"/>
     <div ng-if="ctrl.isOpen && ctrl.list.length > 0" class="toggle-list-container">
       <ul ng-if="ctrl.type != 'grid'">
@@ -13,4 +14,3 @@
       </ul> 
     </div>    
 </div>
-<!--ng-mouseleave="ctrl.hide()"> -->

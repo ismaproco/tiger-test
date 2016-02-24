@@ -1,32 +1,46 @@
 <!-- details section -->
 <section class="details">
-  <div>
+  <div class="page-container">
     <h2>How much time do you need?</h2>
-    <toggle-input placeholder="Duration in hours" data="hoursData" identifier="hours"></toggle-input>
-    <a class="text" href="#">Our basic cleaning</a>
-  </div>
-  <div>
-    <h2>How often?</h2>
-    <toggle-input placeholder="Select frequency" data="frequencyData" identifier="frequency" type="grid"></toggle-input>
-  </div>
-  <div class="often-selection">
-    
-    <div class="options">
-    <h2>Your individual price offer</h2>
-      <div class="often-container">
-        <div ng-repeat="item in frequencyData" class="often-options {{selectedFrequecy.grid0 == item[0] ? 'active': ''}}" >
-
-          <div>{{item[0]}}</div>
-          <div>{{item[1]}}</div>
-          <div class="round"></div>
-        </div>
-      </div>
-
-
-      <span>Economy Plus Offer: Your home will be cleaned by experience Tiger!</span>
-      <span>Our service: We will contact you before your booking to arrange final details.</span>
+    <div class="big-column left">
+      <toggle-input placeholder="Duration in hours" data="hoursData" identifier="hours" icon="fa-history"></toggle-input>
+    </div>
+    <div class="big-column right">
+        <a  href="#" class="lnk-basic"> <i class="fa fa-question-circle"></i> Our basic cleaning</a>
     </div>
   </div>
-  <a href="#address" class="btn">Next</a>
-  <a href="#times" class="link">Go Back</a>
+  <div class="page-container">
+    <div class="big-column left">
+      <h2>How often?</h2>
+      <toggle-input placeholder="Select frequency" data="frequencyData" identifier="frequency" type="grid" icon="fa-refresh"></toggle-input>
+    </div>
+  </div>
+  <div class="page-container">
+    <div class="big-column full">
+      <div class="often-selection">
+        <div class="options">
+          <h2>Your individual price offer</h2>
+          <div class="often-container">
+            <div ng-repeat="item in frequencyData" class="often-options {{selectedFrequecy.grid0 == item[0] ? 'active': ''}}" >
+
+              <div>{{item[0]}}</div>
+              <div>{{item[1]}}</div>
+              <div class="round"></div>
+            </div>
+          </div>
+          
+          <span class="service"><i class="fa fa-thumbs-o-up thumb-up"></i>Economy Plus Offer: Your home will be cleaned by experience Tiger!</span>
+          <span class="service"><strong>Our service</strong>: We will contact you before your booking to arrange final details.</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="page-container">
+    <div class="big-column left">
+      <a href="#address" class="btn">Next</a>
+    </div>
+    <div class="big-column right">
+      <a href="#times" class="lnk-back">Go Back</a>
+    </div>
+  </div>
 </section>
