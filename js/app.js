@@ -67,7 +67,7 @@ app.controller('timesController',['$scope','$location','valuesService',  functio
     $scope.timesData = getTimes();
 }]);
 
-app.controller('detailsController', function($scope) {
+app.controller('detailsController', ['$scope','$location','valuesService',  function($scope, $location, valuesService){
     function getHours() {
         var hours = [];
         for (var i = 1; i < 12; i++) {
@@ -80,12 +80,19 @@ app.controller('detailsController', function($scope) {
 
     function getFrecuency() {
         return [
-            "<span>Once</span><span>from 14,90 /h</>"
+            ['once','from 14,90 € /h'],
+            ['weekly','from 13,90 € /h'],
+            ['every 2 weeks','from 13,90 € /h'],
+            ['every 4 weeks','from 13,90 € /h']
         ];
     }
 
     $scope.frequencyData = getFrecuency();
-});
+
+    $scope.$watch(function(){return valuesService.frequency},function(value){
+        $scope.selectedFrequecy = value;
+    });
+}]);
 
 app.controller('defaultController', function($scope) {
 
@@ -124,7 +131,7 @@ app.controller('toggleInputController', ['$scope', 'valuesService',function($sco
         if(data && Array.isArray(data)) {
             data.forEach(function(value){
                 if(ctrl.type === 'grid'){
-                    ctrl.list.push({grid0:value[0], grid1:value[1]});    
+                    ctrl.list.push({grid0:value[0], grid1:value[1],text:value[0]});    
                 }else{
                     ctrl.list.push({text:value});
                 }

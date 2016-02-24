@@ -7,12 +7,22 @@
   </div>
   <div>
     <h2>How often?</h2>
-    <toggle-input placeholder="Select frequency" data="frequencyData" identifier="frequency"></toggle-input>
+    <toggle-input placeholder="Select frequency" data="frequencyData" identifier="frequency" type="grid"></toggle-input>
   </div>
   <div class="often-selection">
-    <h2>Your individual price offer</h2>
+    
     <div class="options">
-      <tiger-offer></tiger-offer>
+    <h2>Your individual price offer</h2>
+      <div class="often-container">
+        <div ng-repeat="item in frequencyData" class="often-options {{selectedFrequecy.grid0 == item[0] ? 'active': ''}}" >
+
+          <div>{{item[0]}}</div>
+          <div>{{item[1]}}</div>
+          <div class="round"></div>
+        </div>
+      </div>
+
+
       <span>Economy Plus Offer: Your home will be cleaned by experience Tiger!</span>
       <span>Our service: We will contact you before your booking to arrange final details.</span>
     </div>

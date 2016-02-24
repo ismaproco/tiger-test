@@ -1,10 +1,16 @@
-<div class="toggle-list" ng-mouseleave="ctrl.hide()">
-    <input id="time" name="time" type="text" placeholder="{{ctrl.placeholder}}" ng-click="ctrl.toggle()" ng-model="ctrl.selectedValue.text"/>
+<div class="toggle-list" >
+    <input id="time" name="time" type="text" placeholder="{{ctrl.placeholder}}" ng-click="ctrl.toggle()" ng-model="ctrl.selectedValue.text" class="icon"/>
     <div ng-if="ctrl.isOpen && ctrl.list.length > 0" class="toggle-list-container">
-      <ul>
+      <ul ng-if="ctrl.type != 'grid'">
          <li ng-repeat="item in ctrl.list" ng-click="ctrl.selectValue(item)">
             {{ item.text }}
          </li>
       </ul>
+      <ul ng-if="ctrl.type == 'grid'">
+         <li ng-repeat="item in ctrl.list" ng-click="ctrl.selectValue(item)">
+            <span class="hard-text">{{item.grid0}}</span><span class="light-text">{{item.grid1}}</span>
+         </li>
+      </ul> 
     </div>    
 </div>
+<!--ng-mouseleave="ctrl.hide()"> -->
